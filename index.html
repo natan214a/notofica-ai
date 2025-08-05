@@ -1,12 +1,44 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Teste de Notificação</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel de Notificações Fakes</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Notificação com Ícone</h1>
-  <button onclick="enviarNotificacao()">Enviar Notificação</button>
+  <div class="container">
+    <h1>🔔 Painel de Notificações Fakes</h1>
+    <div class="form">
+      <input type="text" id="plataforma" placeholder="Plataforma (ex: Hotmart)" />
+      <input type="number" id="valor" placeholder="Valor (ex: 49.90)" />
+      <input type="text" id="imagem" placeholder="URL da Imagem" />
+      <select id="intervalo">
+        <option value="10000">10s</option>
+        <option value="30000" selected>30s</option>
+        <option value="60000">1min</option>
+      </select>
+      <label><input type="checkbox" id="som" checked /> Som</label>
+      <button onclick="testarNotificacao()">Testar Notificação</button>
+      <button onclick="adicionarNotificacao()">Adicionar à Lista</button>
+      <button onclick="iniciarLoop()">▶️ Iniciar Notificações</button>
+      <button onclick="pararLoop()">⏹ Parar</button>
+    </div>
+
+    <h2>🧾 Histórico</h2>
+    <div id="historico"></div>
+
+    <div id="notificacao" class="hidden">
+      <img id="notifImg" src="" />
+      <div class="texto">
+        <strong>✅ Venda Aprovada - <span id="notifPlataforma"></span></strong><br />
+        💰 R$ <span id="notifValor"></span>
+      </div>
+    </div>
+
+    <audio id="notifSound" src="notif.mp3" preload="auto"></audio>
+  </div>
 
   <script src="script.js"></script>
 </body>
